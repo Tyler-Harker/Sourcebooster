@@ -3,16 +3,16 @@
 import { auth } from "@/lib/firebase/clientConfig";
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import IUser from "../../../Models/user";
+import User from "../../../Models/user";
 import Cookies from 'js-cookie'
 
 interface AuthContextProps {
-    initialUser?: IUser,
+    initialUser?: User,
     children: ReactNode
 }
 
 interface AuthContextProviderProps {
-    user: IUser | undefined,
+    user: User | undefined,
     logInWithEmailAndPassword: (email: string, password: string) => void,
     logOut: () => void
 }
@@ -23,7 +23,7 @@ const authContext = createContext({
 
 export function AuthContext({ children, initialUser }: AuthContextProps) {
     console.log(initialUser, 'initial user')
-    const [user, setUser] = useState<IUser | undefined>(initialUser);
+    const [user, setUser] = useState<User | undefined>(initialUser);
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user === null) {
