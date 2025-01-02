@@ -1,12 +1,7 @@
-import type { GetServerSideProps, Metadata } from "next";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Button } from "@mui/material";
-import IUser from "../../Models/user";
-import firebaseAdmin from "@/lib/firebase/firebaseAdmin";
 import { ReactNode } from "react";
-import { RecoilRoot, useRecoilState } from "recoil";
-import { AuthContext } from "@/components/authContext/authContext";
 import { AuthContextServer } from "@/components/authContext/authContext.server";
 import Navbar from "@/components/navbar/navbar";
 

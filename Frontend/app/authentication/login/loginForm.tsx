@@ -33,7 +33,7 @@ export function LoginForm({ initialEmail, initialPassword, initialError }: Login
             })
             window.location.href = '/dashboard'
         }
-        catch (ex: any) {
+        catch {
             setError('Invalid email or password.')
         }
     }
@@ -66,7 +66,7 @@ export function LoginForm({ initialEmail, initialPassword, initialError }: Login
 
             <hr />
             <span>Forgot your email password? Click <a href="/authentication/forgotPassword" className="text-blue-600 underline">here</a></span>
-            <span>Don't have an account? <a href="/authentication/register" className="text-blue-600 underline">Register Here</a></span>
+            <span>Don&apos;t have an account? <a href="/authentication/register" className="text-blue-600 underline">Register Here</a></span>
         </form>
     );
 }

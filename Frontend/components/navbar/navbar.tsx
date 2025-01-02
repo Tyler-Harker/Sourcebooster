@@ -5,12 +5,13 @@ import { useAuth } from '../authContext/authContext';
 import { IsAuthenticated } from "../authContext/isAuthenticated";
 import { NotAuthenticated } from "../authContext/notAuthenticated";
 import { useState } from "react";
+import Link from "next/link";
 
 
 export default function Navbar() {
     // const { user, isHydrating } = useAuth();
     const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
-    const { user, logOut } = useAuth();
+    const { logOut } = useAuth();
 
     function toggleDrawer() {
         setIsDrawerOpen(!isDrawerOpen);
@@ -21,10 +22,10 @@ export default function Navbar() {
         <section className="relative">
             <div className="h-16 bg-white border-b shadow-md flex items-center justify-between px-4">
                 <div>
-                    <a className="font-bold text-2xl p-2" href="/">
+                    <Link className="font-bold text-2xl p-2" href="/">
                         <span className="text-orange-500">Source</span>
                         <span className="text-gray-700">Booster</span>
-                    </a>
+                    </Link>
                 </div>
                 <div className="">
                     <div className="flex sm:hidden" onClick={toggleDrawer}>
