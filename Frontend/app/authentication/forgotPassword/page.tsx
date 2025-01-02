@@ -19,15 +19,17 @@ export default function ForgotPasswordPage() {
             setMessage('A password reset email has been sent to your email address.');
             setError('');
             setHasSubmitted(true);
-        } catch (err: any) {
-            setError(err.message);
-            setMessage('');
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message);
+            }
         }
     };
 
     return (
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <h1>Forgot Password</h1>
+            {error ? <div>{error}</div> : null}
             {message && <span className="bg-green-100 border border-green-200 p-4 rounded-md">{message}</span>}
             <TextField
                 type="email"

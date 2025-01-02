@@ -1,7 +1,4 @@
 
-import { onAuthStateChanged, User } from "firebase/auth";
-import { auth } from '@/lib/firebase/clientConfig';
-
 export default function AuthenticationLayout({
     children,
 }: Readonly<{

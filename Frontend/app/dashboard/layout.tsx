@@ -1,8 +1,6 @@
 'use client';
-import { onAuthStateChanged, User } from "firebase/auth";
-import { useEffect, useState } from "react";
-import { auth } from '@/lib/firebase/clientConfig';
-import { Button, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, Toolbar } from "@mui/material";
+import { useState } from "react";
+import { Button } from "@mui/material";
 import { SummarizeOutlined } from "@mui/icons-material";
 import { useAuth } from "@/components/authContext/authContext";
 

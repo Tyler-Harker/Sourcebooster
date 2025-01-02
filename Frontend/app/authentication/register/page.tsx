@@ -27,8 +27,10 @@ export default function Register() {
             });
 
             setSuccess('Registration successful! You can now log in.');
-        } catch (err: any) {
-            setError(err.message);
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message);
+            }
         }
     };
 
