@@ -1,4 +1,3 @@
-import { User } from "firebase/auth";
 import { ReactNode } from "react";
 import { useAuth } from "./authContext";
 
@@ -7,6 +6,6 @@ interface UnauthorizedProps {
 }
 
 export function NotAuthenticated({ children }: UnauthorizedProps) {
-    const { user, isHydrating } = useAuth();
-    return user || isHydrating ? null : children;
+    const { user } = useAuth();
+    return user ? null : children;
 }

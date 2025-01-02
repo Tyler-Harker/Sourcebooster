@@ -1,8 +1,8 @@
 'use client';
 
 import { auth } from "@/lib/firebase/clientConfig";
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut, User } from "firebase/auth";
-import { createContext, ReactElement, ReactNode, useContext, useEffect, useState } from "react";
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import IUser from "../../../Models/user";
 import Cookies from 'js-cookie'
 
@@ -13,7 +13,6 @@ interface AuthContextProps {
 
 interface AuthContextProviderProps {
     user: IUser | undefined,
-    isHydrating: boolean,
     logInWithEmailAndPassword: (email: string, password: string) => void,
     logOut: () => void
 }
@@ -25,7 +24,6 @@ const authContext = createContext({
 export function AuthContext({ children, initialUser }: AuthContextProps) {
     console.log(initialUser, 'initial user')
     const [user, setUser] = useState<IUser | undefined>(initialUser);
-    const [isHydrating, setIsHydrating] = useState<boolean>(false);
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user === null) {
@@ -52,7 +50,7 @@ export function AuthContext({ children, initialUser }: AuthContextProps) {
     }
 
     return (
-        <authContext.Provider value={{ user, isHydrating, logInWithEmailAndPassword, logOut }}>
+        <authContext.Provider value={{ user, logInWithEmailAndPassword, logOut }}>
             {children}
         </authContext.Provider>
     );

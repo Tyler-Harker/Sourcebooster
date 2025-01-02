@@ -7,13 +7,12 @@ import IUser from "../../../Models/user";
 export const AuthContextServer = async ({ children }: { children: ReactNode }) => {
     const cookieStore = await cookies();
     const token = cookieStore.get('token')?.value;
-    let email: string | undefined = undefined;
     let user: IUser | undefined = undefined;
     if (token) {
-        let decodedToken = jwtDecode(token);
+        const decodedToken = jwtDecode(token);
         user = {
             id: decodedToken.sub,
-            email: (decodedToken as any)['email']
+            email: 'email'
         } as IUser
     }
 

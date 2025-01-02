@@ -1,9 +1,6 @@
 // firebaseConfig.ts
-import { initializeApp, FirebaseApp, getApps } from 'firebase/app';
-import { getAuth, Auth, Persistence } from 'firebase/auth';
-import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
-import IUser from '../../../Models/user';
-import { parseCookies } from 'nookies';
+import { initializeApp } from 'firebase/app';
+import { getAuth, Auth } from 'firebase/auth';
 import { Firestore, getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -15,9 +12,9 @@ const firebaseConfig = {
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID as string,
 };
 
-let app = initializeApp(firebaseConfig);
-let auth: Auth = getAuth();
-let db: Firestore = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const auth: Auth = getAuth();
+const db: Firestore = getFirestore(app);
 
 
 export { auth, db };
