@@ -12,6 +12,8 @@
   },
   "compileOnSave": true,
   "include": [
+    "Frontend/",
+    "Models/",
     "functions/"
   ]
 }
